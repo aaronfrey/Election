@@ -1,0 +1,7 @@
+<h1>Enter Your Zip Code</h1>
+<form (ngSubmit)="onSubmit(zipcode.value)">
+  <div class="form-group">
+    <input #zipcode type="text" class="form-control" placeholder="Your Zip Code" required>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>

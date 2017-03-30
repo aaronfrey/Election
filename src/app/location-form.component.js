@@ -9,23 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var app_component_1 = require('./app.component');
-var header_component_1 = require('./header.component');
-var location_form_component_1 = require('./location-form.component');
-var AppModule = (function () {
-    function AppModule() {
+var LocationFormComponent = (function () {
+    function LocationFormComponent() {
+        this.submitted = false;
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, location_form_component_1.LocationFormComponent],
-            bootstrap: [app_component_1.AppComponent]
+    LocationFormComponent.prototype.onSubmit = function (zipcode) {
+        this.submitted = true;
+    };
+    LocationFormComponent = __decorate([
+        core_1.Component({
+            selector: 'location-form',
+            templateUrl: './location-form.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], LocationFormComponent);
+    return LocationFormComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.LocationFormComponent = LocationFormComponent;
+//# sourceMappingURL=location-form.component.js.map
