@@ -1,7 +1,39 @@
-<h1>Enter Your Zip Code</h1>
-<form (ngSubmit)="onSubmit(zipcode.value)">
-  <div class="form-group">
-    <input #zipcode type="text" class="form-control" placeholder="Your Zip Code" required>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <h1>Enter your Zip Code</h1>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value, f.valid)" novalidate>
+      	<div class="form-group">
+    	    <input type="number"
+    	    	class="form-control"
+    	    	placeholder="Zip Code"
+    	    	name="zip" (ngModel)="address.zip"
+    	    	#zip="ngModel" required minlength="5" maxlength="5">
+     		   <!--show error only when field is not valid & it's dirty or form submited-->
+            <small [hidden]="zip.valid || (zip.pristine && !f.submitted)">
+              Zipcode is required (minimum 5 digits).
+            </small>
+      	</div>
+      	<button [disabled]="!f.valid" type="submit" class="btn btn-success">Search</button>
+      </form>
+
+    </div>
+
   </div>
-  <button type="submit" class="btn btn-success">Submit</button>
-</form>
+
+  <div *ngFor="let representative of representatives">
+    <div class="row">
+      <div class="col-md-4">
+        <img style="width: 300px;" class="img-circle img-responsive" *ngIf="representative.photoUrl" src="{{ representative.photoUrl }}">
+      </div>
+      <div class="col-md-8">
+        <h2>{{ representative.name }}</h2>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div><!-- .container -->

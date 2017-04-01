@@ -1,13 +1,27 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
+import { Address } from './address';
+import { Representative } from './representative';
+
+import {RepresentativeSearchService} from './representative.service';
 
 @Component({
-  selector: 'location-form',
-  templateUrl: './location-form.component.html'
+  	selector: 'location-form',
+  	templateUrl: './location-form.component.html'
 })
 export class LocationFormComponent {
-  submitted = false;
-  onSubmit(zipcode: string) {
-  	this.submitted = true;
-  }
+
+	constructor(private _representativeSearchService:RepresentativeSearchService) {}
+
+    private representatives:Representative[] = [];
+    private errorMessage:any = '';
+
+  	public address: Address;
+
+  	onSubmit(model: Address, isValid: boolean) {
+        this._representativeSearchService.getData(model.zip)
+            .subscribe(
+                representatives => this.representatives = representatives,
+                error => this.errorMessage = <any>error);
+  	}
 }

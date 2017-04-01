@@ -9,19 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var representative_service_1 = require('./representative.service');
 var LocationFormComponent = (function () {
-    function LocationFormComponent() {
-        this.submitted = false;
+    function LocationFormComponent(_representativeSearchService) {
+        this._representativeSearchService = _representativeSearchService;
+        this.representatives = [];
+        this.errorMessage = '';
     }
-    LocationFormComponent.prototype.onSubmit = function (zipcode) {
-        this.submitted = true;
+    LocationFormComponent.prototype.onSubmit = function (model, isValid) {
+        var _this = this;
+        this._representativeSearchService.getData(model.zip)
+            .subscribe(function (representatives) { return _this.representatives = representatives; }, function (error) { return _this.errorMessage = error; });
     };
     LocationFormComponent = __decorate([
         core_1.Component({
             selector: 'location-form',
             templateUrl: './location-form.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [representative_service_1.RepresentativeSearchService])
     ], LocationFormComponent);
     return LocationFormComponent;
 }());

@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var representative_service_1 = require('./representative.service');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -17,6 +18,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             templateUrl: './app.component.html',
             styleUrls: ['css/app.component.css'],
+            providers: [representative_service_1.RepresentativeSearchService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
