@@ -21,7 +21,20 @@ export class RepresentativeSearchService {
 	}
 
   private extractData(res:Response) {
+
     let body = res.json();
+
+    console.log(body);
+
+    for (let office of body.offices) {
+		  if (office.officialIndices.length) {
+		  	for (let officialIndex of office.officialIndices) {
+		  		body.officials[officialIndex].title = office.name;
+		  		body.officials[officialIndex].division = body.divisions[office.divisionId].name;
+		  	}
+		  }
+		}
+
     return body.officials || [];
   }
 

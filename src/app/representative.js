@@ -1,10 +1,11 @@
 "use strict";
 var Representative = (function () {
-    function Representative(id, name, address, party, phones, urls, photoUrl, emails) {
-        this.id = id;
+    function Representative(name, title, division, party, address, phones, urls, photoUrl, emails) {
         this.name = name;
-        this.address = address;
+        this.title = title;
+        this.division = division;
         this.party = party;
+        this.address = address;
         this.phones = phones;
         this.urls = urls;
         this.photoUrl = photoUrl;

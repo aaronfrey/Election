@@ -25,6 +25,17 @@ var RepresentativeSearchService = (function () {
     };
     RepresentativeSearchService.prototype.extractData = function (res) {
         var body = res.json();
+        console.log(body);
+        for (var _i = 0, _a = body.offices; _i < _a.length; _i++) {
+            var office = _a[_i];
+            if (office.officialIndices.length) {
+                for (var _b = 0, _c = office.officialIndices; _b < _c.length; _b++) {
+                    var officialIndex = _c[_b];
+                    body.officials[officialIndex].title = office.name;
+                    body.officials[officialIndex].division = body.divisions[office.divisionId].name;
+                }
+            }
+        }
         return body.officials || [];
     };
     RepresentativeSearchService.prototype.handleError = function (error) {

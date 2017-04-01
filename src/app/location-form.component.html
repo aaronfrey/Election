@@ -12,10 +12,10 @@
     	    	placeholder="Zip Code"
     	    	name="zip" (ngModel)="address.zip"
     	    	#zip="ngModel" required minlength="5" maxlength="5">
-     		   <!--show error only when field is not valid & it's dirty or form submited-->
-            <small [hidden]="zip.valid || (zip.pristine && !f.submitted)">
-              Zipcode is required (minimum 5 digits).
-            </small>
+          <!--show error only when field is not valid & it's dirty or form submited-->
+          <small [hidden]="zip.valid || (zip.pristine && !f.submitted)">
+            Zipcode is required (minimum 5 digits).
+          </small>
       	</div>
       	<button [disabled]="!f.valid" type="submit" class="btn btn-success">Search</button>
       </form>
@@ -30,7 +30,8 @@
         <img style="width: 300px;" class="img-circle img-responsive" *ngIf="representative.photoUrl" src="{{ representative.photoUrl }}">
       </div>
       <div class="col-md-8">
-        <h2>{{ representative.name }}</h2>
+        <h2>{{ representative.name }} - {{ representative.party }}</h2>
+        <h4>{{ representative.title }} - {{ representative.division }}</h4>
       </div>
     </div>
     <hr>
