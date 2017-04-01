@@ -1,40 +1,27 @@
-<div class="container">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value, f.valid)" class="navbar-form" novalidate>
+	<div class="form-group clearfix">
+    <input type="number"
+    	class="form-control"
+    	placeholder="Zip Code"
+    	name="zip" (ngModel)="address.zip"
+    	#zip="ngModel" required minlength="5" maxlength="5">
+    <button [disabled]="!f.valid" type="submit" class="btn btn-success">Search</button>
+  </div>
+  <!--show error only when field is not valid & it's dirty or form submited-->
+  <small [hidden]="zip.valid || (zip.pristine && !f.submitted)">
+    Zipcode is required (minimum 5 digits).
+  </small>
+</form>
 
+<!-- <div *ngFor="let representative of representatives">
   <div class="row">
-
-    <div class="col-md-12">
-
-      <h1>Enter your Zip Code</h1>
-      <form #f="ngForm" (ngSubmit)="onSubmit(f.value, f.valid)" novalidate>
-      	<div class="form-group">
-    	    <input type="number"
-    	    	class="form-control"
-    	    	placeholder="Zip Code"
-    	    	name="zip" (ngModel)="address.zip"
-    	    	#zip="ngModel" required minlength="5" maxlength="5">
-          <!--show error only when field is not valid & it's dirty or form submited-->
-          <small [hidden]="zip.valid || (zip.pristine && !f.submitted)">
-            Zipcode is required (minimum 5 digits).
-          </small>
-      	</div>
-      	<button [disabled]="!f.valid" type="submit" class="btn btn-success">Search</button>
-      </form>
-
+    <div class="col-md-4">
+      <img style="width: 300px;" class="img-circle img-responsive" *ngIf="representative.photoUrl" src="{{ representative.photoUrl }}">
     </div>
-
-  </div>
-
-  <div *ngFor="let representative of representatives">
-    <div class="row">
-      <div class="col-md-4">
-        <img style="width: 300px;" class="img-circle img-responsive" *ngIf="representative.photoUrl" src="{{ representative.photoUrl }}">
-      </div>
-      <div class="col-md-8">
-        <h2>{{ representative.name }} - {{ representative.party }}</h2>
-        <h4>{{ representative.title }} - {{ representative.division }}</h4>
-      </div>
+    <div class="col-md-8">
+      <h2>{{ representative.name }} - {{ representative.party }}</h2>
+      <h4>{{ representative.title }} - {{ representative.division }}</h4>
     </div>
-    <hr>
   </div>
-
-</div><!-- .container -->
+  <hr>
+</div> -->
