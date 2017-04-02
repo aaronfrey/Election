@@ -17,7 +17,6 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: './app.component.html',
-            styleUrls: ['css/app.component.css'],
             providers: [representative_service_1.RepresentativeSearchService]
         }), 
         __metadata('design:paramtypes', [])
