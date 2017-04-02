@@ -21,7 +21,7 @@ export class LocationFormComponent {
 	onSubmit(model: Address, isValid: boolean) {
     this._representativeSearchService.getData(model.zip)
       .subscribe(
-          representatives => this.representatives = representatives,
-          error => this.errorMessage = <any>error);
+        representatives => this.representatives = representatives,
+        error => this.errorMessage = <any>error);
 	}
 }
