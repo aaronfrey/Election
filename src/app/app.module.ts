@@ -4,12 +4,11 @@ import { FormsModule }   	from '@angular/forms';
 import { HttpModule } 		from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { HeaderComponent }  from './header.component';
 import { LocationFormComponent } from './location-form.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpModule ],
-  declarations: [ AppComponent, HeaderComponent, LocationFormComponent ],
+  declarations: [ AppComponent, LocationFormComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

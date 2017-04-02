@@ -12,9 +12,9 @@ h1 {
 }
 
 .navbar-form {
-    float: right;
     border: none;
     margin: 0;
+    text-align: center;
 }
 
 .navbar-form .form-group {
@@ -45,6 +45,6 @@ h1 {
 }
 
 .instructions h3 {
-    max-width: 450px;
+    max-width: 475px;
     margin: 0 auto;
 }

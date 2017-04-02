@@ -13,15 +13,43 @@
   </small>
 </form>
 
-<!-- <div *ngFor="let representative of representatives">
+<div *ngFor="let representative of representatives">
   <div class="row">
-    <div class="col-md-4">
-      <img style="width: 300px;" class="img-circle img-responsive" *ngIf="representative.photoUrl" src="{{ representative.photoUrl }}">
+    <div class="col-md-3">
+      <img *ngIf="representative.photoUrl" style="width: 300px;" class="img-thumbnail img-responsive" src="{{ representative.photoUrl }}">
+      <img *ngIf="!representative.photoUrl" class="img-thumbnail img-responsive" src="http://placehold.it/300x300?text=Image+Not+Available">
     </div>
-    <div class="col-md-8">
-      <h2>{{ representative.name }} - {{ representative.party }}</h2>
-      <h4>{{ representative.title }} - {{ representative.division }}</h4>
+    <div class="col-md-9">
+      <h2>{{ representative.name }} - <small>{{ representative.party }}</small></h2>
+      <h4>{{ representative.title }} - <small>{{ representative.division }}</small></h4>
+      <div class="row">
+        <div class="col-md-6" *ngIf="representative.address">
+          <h4>Address</h4>
+          <div *ngFor="let address of representative.address">
+            <p>{{ address.line1 }} {{ address.line2 }}</p>
+            <p>{{ address.city }}, {{ address.state }} {{ address.zip }}</p>
+          </div>
+          <br>
+        </div>
+        <div class="col-md-4" *ngIf="representative.emails || representative.phones">
+          <h4>Contact Info</h4>
+          <div *ngIf="representative.emails">
+            <h5>Email</h5>
+            <a href="mailto:{{ email }}" target="_blank" *ngFor="let email of representative.emails">{{ email }}</a>
+          </div>
+          <div *ngIf="representative.phones">
+            <h5>Phone</h5>
+            <a href="tel:{{ phone }}" target="_blank" *ngFor="let phone of representative.phones">{{ phone }}</a>            
+          </div>
+          <br>
+        </div>
+        <div class="col-md-2" *ngIf="representative.urls">
+          <h4>Urls</h4>
+          <a href="{{ url }}" target="_blank" *ngFor="let url of representative.urls">Website</a>
+          <br>
+        </div>
+      </div>
     </div>
   </div>
   <hr>
-</div> -->
+</div>
