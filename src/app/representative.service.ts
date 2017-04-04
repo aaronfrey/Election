@@ -10,9 +10,9 @@ import { Representative } from './representative';
 @Injectable()
 export class RepresentativeSearchService {
 
-  constructor(private http: Http) {}
+	private apiKey: string = 'AIzaSyC-801rMzPAEUoU7N-uC1Q3xIRC1oWBp0U';
 
-  public apiKey: string = 'AIzaSyC-801rMzPAEUoU7N-uC1Q3xIRC1oWBp0U';
+  constructor(private http: Http) {}
 
 	getData(zip: string):Observable<Representative[]> {
     return this.http.get(`https://www.googleapis.com/civicinfo/v2/representatives?key=${this.apiKey}&address=${zip}`)
@@ -23,8 +23,6 @@ export class RepresentativeSearchService {
   private extractData(res:Response) {
 
     let body = res.json();
-
-    console.log(body);
 
     for (let office of body.offices) {
 		  if (office.officialIndices.length) {

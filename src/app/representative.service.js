@@ -25,7 +25,6 @@ var RepresentativeSearchService = (function () {
     };
     RepresentativeSearchService.prototype.extractData = function (res) {
         var body = res.json();
-        console.log(body);
         for (var _i = 0, _a = body.offices; _i < _a.length; _i++) {
             var office = _a[_i];
             if (office.officialIndices.length) {
